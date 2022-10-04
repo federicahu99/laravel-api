@@ -2,7 +2,7 @@
   <div class="container">
     <h2 class="mt-4">Posts</h2>
     <ul v-if="posts.length">
-        <TheCard v-for="post in posts" :key="post.id" :post="post"/>
+        <TheCard v-for="post in posts" :key="post.id" :post="post" class="row"/>
     </ul>
     <h3 class="mt-3 font-weight-light" v-else>Nothing found</h3>
   </div>

@@ -1,18 +1,19 @@
 <template>
   <div>
-    <li>
-      <div class="card">
-        <img :src="post.image" class="card-img-top" :alt="post.title" />
+    <li class="d-flex">
+      
+      <div class="card col-12 p-2 m-2">
+        <!-- <img :src="post.image" class="card-img-top" :alt="post.title" /> -->
         <div class="card-body">
-          <h5 class="card-title"> {{ post.title }} </h5>
+          <h3 class="card-title"> {{ post.title }} </h3>
           <p class="card-text">
             {{ post.content }}
           </p>
-          <h5> Created at: {{ post.created_at}}</h5>
-          <h5> Updated at: {{ post.updated_at}}</h5>
-          <h4> Created by: {{ post.user_id}}</h4>
+          <h6> Created at: {{ publishedAt }}</h6>
+          <h6> Created by: {{ post.user_id}} (Id of user)</h6>
         </div>
-      </div>
+   
+    </div>
     </li>
   </div>
 </template>
@@ -23,6 +24,20 @@ export default {
   props: {
     post: Object,
   },
+  computed: {
+      publishedAt() {
+        const postDate = new Date(this.post.created_at);
+        let day = postDate.getDate();
+        let month = postDate.getMonth();
+        let year = postDate.getFullYear();
+
+        if(day < 10 ) day = "0" + day;
+        if(month < 10 ) month = "0" + month;
+
+
+        return `${day}-${month}-${year}`;
+      }
+  }
 };
 </script>
 

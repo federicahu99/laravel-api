@@ -1950,6 +1950,17 @@ __webpack_require__.r(__webpack_exports__);
   name: "TheCard",
   props: {
     post: Object
+  },
+  computed: {
+    publishedAt: function publishedAt() {
+      var postDate = new Date(this.post.created_at);
+      var day = postDate.getDate();
+      var month = postDate.getMonth();
+      var year = postDate.getFullYear();
+      if (day < 10) day = "0" + day;
+      if (month < 10) month = "0" + month;
+      return "".concat(day, "-").concat(month, "-").concat(year);
+    }
   }
 });
 
@@ -2103,21 +2114,17 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("li", [_c("div", {
-    staticClass: "card"
-  }, [_c("img", {
-    staticClass: "card-img-top",
-    attrs: {
-      src: _vm.post.image,
-      alt: _vm.post.title
-    }
-  }), _vm._v(" "), _c("div", {
+  return _c("div", [_c("li", {
+    staticClass: "d-flex"
+  }, [_c("div", {
+    staticClass: "card col-12 p-2 m-2"
+  }, [_c("div", {
     staticClass: "card-body"
-  }, [_c("h5", {
+  }, [_c("h3", {
     staticClass: "card-title"
   }, [_vm._v(" " + _vm._s(_vm.post.title) + " ")]), _vm._v(" "), _c("p", {
     staticClass: "card-text"
-  }, [_vm._v("\n          " + _vm._s(_vm.post.content) + "\n        ")]), _vm._v(" "), _c("h5", [_vm._v(" Created at: " + _vm._s(_vm.post.created_at))]), _vm._v(" "), _c("h5", [_vm._v(" Updated at: " + _vm._s(_vm.post.updated_at))]), _vm._v(" "), _c("h4", [_vm._v(" Created by: " + _vm._s(_vm.post.user_id))])])])])]);
+  }, [_vm._v("\n          " + _vm._s(_vm.post.content) + "\n        ")]), _vm._v(" "), _c("h6", [_vm._v(" Created at: " + _vm._s(_vm.publishedAt))]), _vm._v(" "), _c("h6", [_vm._v(" Created by: " + _vm._s(_vm.post.user_id) + " (Id of user)")])])])])]);
 };
 
 var staticRenderFns = [];
@@ -2148,6 +2155,7 @@ var render = function render() {
   }, [_vm._v("Posts")]), _vm._v(" "), _vm.posts.length ? _c("ul", _vm._l(_vm.posts, function (post) {
     return _c("TheCard", {
       key: post.id,
+      staticClass: "row",
       attrs: {
         post: post
       }
