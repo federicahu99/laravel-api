@@ -17,9 +17,7 @@ export default {
   components: {
     TheCard,
   },
-  props: {
-    post: Object,
-  },
+
   data() {
     return {
       posts: [],

@@ -1947,7 +1947,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "TheCard"
+  name: "TheCard",
+  props: {
+    post: Object
+  }
 });
 
 /***/ }),
@@ -1970,9 +1973,6 @@ __webpack_require__.r(__webpack_exports__);
   name: "ThePost",
   components: {
     TheCard: _TheCard__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  props: {
-    post: Object
   },
   data: function data() {
     return {
@@ -2099,9 +2099,29 @@ render._withStripped = true;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function render() {};
+var render = function render() {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", [_c("li", [_c("div", {
+    staticClass: "card"
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: _vm.post.image,
+      alt: _vm.post.title
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h5", {
+    staticClass: "card-title"
+  }, [_vm._v(" " + _vm._s(_vm.post.title) + " ")]), _vm._v(" "), _c("p", {
+    staticClass: "card-text"
+  }, [_vm._v("\n          " + _vm._s(_vm.post.content) + "\n        ")]), _vm._v(" "), _c("h5", [_vm._v(" Created at: " + _vm._s(_vm.post.created_at))]), _vm._v(" "), _c("h5", [_vm._v(" Updated at: " + _vm._s(_vm.post.updated_at))]), _vm._v(" "), _c("h4", [_vm._v(" Created by: " + _vm._s(_vm.post.user_id))])])])])]);
+};
 
 var staticRenderFns = [];
+render._withStripped = true;
 
 
 /***/ }),
