@@ -1,24 +1,31 @@
 <template>
   <div class="container">
     <h2 class="mt-4">Posts</h2>
-    <MainLoader v-if="IsLoading"/>
-    <ul v-if="posts.length">
-        <TheCard v-for="post in posts" :key="post.id" :post="post" class="row"/>
-    </ul>
-    <h3 class="mt-3 font-weight-light" v-else>Nothing found</h3>
+    <MainLoader v-if="IsLoading" />
+    <div v-else>
+      <ul v-if="posts.length">
+        <TheCard
+          v-for="post in posts"
+          :key="post.id"
+          :post="post"
+          class="row"
+        />
+      </ul>
+      <h3 class="mt-3 font-weight-light" v-else>Nothing found</h3>
+    </div>
   </div>
 </template>
 
 <script>
-import Axios from 'axios';
-import TheCard from './TheCard';
+import Axios from "axios";
+import TheCard from "./TheCard";
 import MainLoader from "../MainLoader.vue";
 
 export default {
   name: "ThePost",
   components: {
     TheCard,
-    MainLoader
+    MainLoader,
   },
   data() {
     return {
@@ -28,22 +35,24 @@ export default {
   },
   methods: {
     fetchPosts() {
-        this.isLoading = true;
-        axios.get("http://127.0.0.1:8000/api/posts")
+      this.isLoading = true;
+      axios
+        .get("http://127.0.0.1:8000/api/posts")
         .then((res) => {
-            this.posts = res.data;
-        }).catch(err => {
-            console.error(err);
+          this.posts = res.data;
+        })
+        .catch((err) => {
+          console.error(err);
         })
         .then(() => {
-            console.info('Called api');
-            this.isLoading = false;
-        })
+          console.info("Called api");
+          this.isLoading = false;
+        });
     },
   },
   mounted() {
     this.fetchPosts();
-  }
+  },
 };
 </script>
 
