@@ -2,10 +2,7 @@
   <div class="container">
     <h2 class="mt-4">Posts</h2>
     <ul v-if="posts.length">
-        <li v-for="post in posts" :key="post.id">
-            <img src="" alt="">
-            <h4> {{ post.title }}</h4>
-        </li>
+        <TheCard v-for="post in posts" :key="post.id" :post="post"/>
     </ul>
     <h3 class="mt-3 font-weight-light" v-else>Nothing found</h3>
   </div>
@@ -13,9 +10,16 @@
 
 <script>
 import Axios from 'axios';
+import TheCard from './TheCard';
 
 export default {
   name: "ThePost",
+  components: {
+    TheCard,
+  },
+  props: {
+    post: Object,
+  },
   data() {
     return {
       posts: [],
