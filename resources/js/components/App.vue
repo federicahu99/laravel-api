@@ -1,11 +1,19 @@
 <template>
     <div class="content">
-        <div class="title m-b-md">We Are Coming Soon...</div>
+        <TheHeader></TheHeader>
+
     </div>
 </template>
 
 <script>
-    export default {
-       name:"App",
-    }
+import TheHeader from"./TheHeader.vue"
+import ThePost from"./ThePost.vue"
+
+export default {
+   name:"App",
+   components: {
+    TheHeader,
+    ThePost,
+   }
+}
 </script>

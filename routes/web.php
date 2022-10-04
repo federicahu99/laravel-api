@@ -36,6 +36,6 @@ Route::middleware('auth')
         })->where('any', '.*');
     });
 
-Route::get('/{any?}', function () { //qualunque cosa mi manda in home
+Route::get('/{any?}', function () { //qualunque cosa mi manda in guest home
     return view('guest.home');
 })->where('any', '.*');
