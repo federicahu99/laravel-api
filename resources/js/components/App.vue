@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import TheHeader from"./TheHeader.vue"
-import ThePost from"./posts/ThePost.vue"
+import TheHeader from "./TheHeader.vue"
+import ThePost from "./posts/ThePost.vue"
 
 export default {
    name:"App",
    components: {
     TheHeader,
-    ThePost,
+    ThePost
    }
 }
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h2 class="mt-4">Posts</h2>
+    <MainLoader v-if="IsLoading"/>
     <ul v-if="posts.length">
         <TheCard v-for="post in posts" :key="post.id" :post="post" class="row"/>
     </ul>
@@ -11,20 +12,23 @@
 <script>
 import Axios from 'axios';
 import TheCard from './TheCard';
+import MainLoader from "../MainLoader.vue";
 
 export default {
   name: "ThePost",
   components: {
     TheCard,
+    MainLoader
   },
-
   data() {
     return {
       posts: [],
+      isLoading: false,
     };
   },
   methods: {
     fetchPosts() {
+        this.isLoading = true;
         axios.get("http://127.0.0.1:8000/api/posts")
         .then((res) => {
             this.posts = res.data;
@@ -32,7 +36,8 @@ export default {
             console.error(err);
         })
         .then(() => {
-            console.info('Called api')
+            console.info('Called api');
+            this.isLoading = false;
         })
     },
   },
@@ -44,3 +49,6 @@ export default {
 
 <style>
 </style>
+
+
+
