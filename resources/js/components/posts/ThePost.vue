@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2 class="mt-4">Posts</h2>
-    <MainLoader v-if="IsLoading" />
+    <BaseLoader v-if="loading" />
     <div v-else>
       <ul v-if="posts.length">
         <TheCard
@@ -19,23 +19,23 @@
 <script>
 import Axios from "axios";
 import TheCard from "./TheCard";
-import MainLoader from "../MainLoader.vue";
+import BaseLoader from "../BaseLoader.vue";
 
 export default {
   name: "ThePost",
   components: {
     TheCard,
-    MainLoader,
+    BaseLoader,
   },
   data() {
     return {
       posts: [],
-      isLoading: false,
+      loading: false,
     };
   },
   methods: {
     fetchPosts() {
-      this.isLoading = true;
+      this.loading = true;
       axios
         .get("http://127.0.0.1:8000/api/posts")
         .then((res) => {
@@ -46,7 +46,7 @@ export default {
         })
         .then(() => {
           console.info("Called api");
-          this.isLoading = false;
+          this.loading = false;
         });
     },
   },

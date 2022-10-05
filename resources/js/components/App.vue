@@ -1,19 +1,19 @@
 <template>
     <div class="content">
         <TheHeader></TheHeader>
-        <ThePost></ThePost>
+        <TheHomePage />
     </div>
 </template>
 
 <script>
-import TheHeader from "./TheHeader.vue"
-import ThePost from "./posts/ThePost.vue"
+import TheHeader from "./TheHeader.vue";
+import TheHomeaPage from "./pages/TheHomePage.vue";
 
 export default {
    name:"App",
    components: {
     TheHeader,
-    ThePost
+    TheHomePage,
    }
 }
 </script>
