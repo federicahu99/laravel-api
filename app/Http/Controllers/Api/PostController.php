@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::All();
+        $posts = Post::with(['category'])->paginate(3);
         return response()->json($posts);
     }
 
@@ -38,7 +38,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::with(['category', 'tags'])->find($id);
+        $post = Post::with(['category', 'tags', 'user'])->find($id);
 
         if(!$post) return response('Not found', 404);
         return response()->json($post);
@@ -54,6 +54,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**
