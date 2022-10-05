@@ -3,9 +3,9 @@
     <h2 class="mt-4">Posts</h2>
     <BaseLoader v-if="loading" />
     <div v-else>
-      <ul v-if="posts.length">
+      <ul v-if="posts.data.length">
         <TheCard
-          v-for="post in posts"
+          v-for="post in posts.data"
           :key="post.id"
           :post="post"
           class="row"

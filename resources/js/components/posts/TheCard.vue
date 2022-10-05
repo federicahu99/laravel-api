@@ -9,8 +9,11 @@
           <p class="card-text">
             {{ post.content }}
           </p>
+          <div class="d-flex justify-content-between align-items-center">
           <h6> Created at: {{ publishedAt }}</h6>
           <h6> Created by: {{ post.user_id}} (Id of user)</h6>
+          <router-link :to="`/posts/${post.id}`" class="btn btn-primary">View</router-link>
+        </div>
         </div>
    
     </div>
