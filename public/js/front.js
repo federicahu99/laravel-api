@@ -2008,8 +2008,34 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _posts_TheCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../posts/TheCard.vue */ "./resources/js/components/posts/TheCard.vue");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ThePostDetail'
+  name: 'ThePostDetail',
+  components: {
+    TheCard: _posts_TheCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      post: []
+    };
+  },
+  methods: {
+    fetchPost: function fetchPost() {
+      var _this = this;
+
+      axios.get("http://127.0.0.1:8000/api/posts/" + this.$route.params.id).then(function (res) {
+        _this.post = res.data;
+      })["catch"](function (err) {
+        console.error(err);
+      }).then(function () {
+        console.info("Called api");
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.fetchPost();
+  }
 });
 
 /***/ }),
@@ -2330,7 +2356,15 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div");
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("h1", {
+    staticClass: "mt-5"
+  }, [_vm._v("Post: ")]), _vm._v(" "), _c("TheCard", {
+    attrs: {
+      post: _vm.post
+    }
+  })], 1);
 };
 
 var staticRenderFns = [];
