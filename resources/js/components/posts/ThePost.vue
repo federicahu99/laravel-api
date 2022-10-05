@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <h2 class="mt-4">Posts</h2>
     <BaseLoader v-if="loading" />
     <div v-else>
