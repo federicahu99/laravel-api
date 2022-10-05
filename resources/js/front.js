@@ -8,10 +8,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-
+import router from './router.js'
 import App from './components/App.vue'
 
 const app = new Vue({
+    router: router, // !!!! oppure semplicemente 'router' key=
     el: '#root',
-    render: h => h(App)
+    render: h => h(App),
 });
